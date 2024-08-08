@@ -1,33 +1,52 @@
 import React, {useState,useRef,useEffect} from "react";
 
 function Stopwatch(){
-    const [isRunning, setIsRunning] = useState(false);
-    const [isStopped, setIsStopped] = useState(true);
+    const [isGoing, setIsGoing] = useState(false);
     const [timePassed, setTimePassed] = useState(0);
 
     const intervalIdRef = useRef(null);
     const startTimeRef = useRef(0);
 
     useEffect(() => {
-
-    }, {isRunning});
+        if(isGoing){
+            intervalIdRef.current = setInterval(() =>{
+                setTimePassed(Date.now() - startTimeRef.current);
+            }, 10);
+        }
+        return() => {
+            clearInterval(intervalIdRef.current);
+        }
+    }, [isGoing]);
 
     function start(){
-
+        setIsGoing(true);
+        startTimeRef.current = Date.now() - timePassed;
     }
     function stop(){
-
+        setIsGoing(false);
     }
     function reset(){
-
+        setIsGoing(false);
+        setTimePassed(0);
     }
 
     function formatTime(){
-        return '00:00:00';
+        let hours = Math.floor(timePassed / (1000 * 60 * 60));
+        let minutes = Math.floor(timePassed / (1000 * 60) %60);
+        let seconds = Math.floor(timePassed / (1000)%60);
+        let milliseconds = Math.floor((timePassed % 1000) / 10);
+
+        hours = String(hours).padStart(2, "0");
+        minutes = String(minutes).padStart(2, "0");
+        seconds = String(seconds).padStart(2, "0");
+        milliseconds = String(milliseconds).padStart(2, "0");
+
+        return `${hours}:${minutes}:${seconds}:${milliseconds}`;
     }
 
-    return(<div className="stopwatch">
-        <div className="display">
+    return(
+    <div className="stopwatch">
+        <div className="timer">
             {
                 formatTime()
             }
