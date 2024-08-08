@@ -1,8 +1,8 @@
 import React, {useState,useRef,useEffect} from "react";
 
 function Stopwatch(){
-    const [isRunning, setIsRunning] = useState(False);
-    const [isStopped, setIsStopped] = useState(True);
+    const [isRunning, setIsRunning] = useState(false);
+    const [isStopped, setIsStopped] = useState(true);
     const [timePassed, setTimePassed] = useState(0);
 
     const intervalIdRef = useRef(null);
@@ -31,6 +31,11 @@ function Stopwatch(){
             {
                 formatTime()
             }
+        </div>
+        <div className="controls">
+            <button onClick={start} className="watch-start">Start</button>
+            <button onClick={stop} className="watch-stop">Stop</button>
+            <button onClick={reset} className="watch-reset">Reset</button>
         </div>
     </div>);
 }

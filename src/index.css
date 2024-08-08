@@ -1,4 +1,10 @@
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /*background-color: white;*/
+
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +16,49 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.stopwatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid;
+  border-radius: 50px;
+  /*background-color: white;*/
+  padding: 30px;
+
+}
+
+.display {
+  font-size: 5rem;
+  font-family: monospace;
+  font-weight: bold;
+  /*color: hsl(0,0%,30%)*/
+  text-shadow: 2px 2px 2px hsla(0,0%,0%,0.75);
+  margin-bottom: 20px;
+}
+
+.controls button{
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 5px;
+  min-width: 125px;
+  border:none;
+  border-radius: 10px;
+  cursor: pointer;
+  /*color: white;*/
+  transition: background-color 0.5s ease;
+}
+.watch-start button{
+  background-color: green;
+}
+.watch-start button{
+  background-color: DarkGreen;
+}
+.watch-stop button{
+  background-color: red;
+}
+.watch-stop button{
+  background-color: DarkRed;
 }
