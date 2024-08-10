@@ -1,5 +1,6 @@
 {
   "name": "react-stopwatch",
+  "homepage": "https://Daniel-Unah.github.io/react-stopwatch",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
